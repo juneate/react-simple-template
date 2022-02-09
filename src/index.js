@@ -1,15 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import HelloWorld from 'components/HelloWorld'
-import 'css/reset.css';
-import 'css/index.css';
-
-const App = () => {
-	return (
-		<>
-			<HelloWorld />
-		</>
-	)
-}
+import React from 'react'
+import ReactDOM from 'react-dom'
+import 'css/reset.css'
+import 'css/index.css'
+import App from './App'
 
 ReactDOM.render(<App />, document.getElementById('root'))

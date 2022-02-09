@@ -1,5 +1,5 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+const path = require('path')
 
 module.exports = {
 	module: {
@@ -12,11 +12,14 @@ module.exports = {
 				test: /\.html$/,
 				use: ['html-loader']
 			}, {
+				test: /\.css$/,
+				use:['style-loader','css-loader']
+			}, {
 				test: /\.(png|svg|jpg|jpeg|gif)$/,
 				use: ['file-loader']
 			}, {
-				test: /\.css$/,
-				use:['style-loader','css-loader']
+				test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+				use: ['file-loader']
 			}
 		]
 	},
@@ -26,11 +29,24 @@ module.exports = {
 			filename: './index.html'
 		})
 	], 
+	devServer: {
+		port: 8080,
+		historyApiFallback: {
+			index: `index.html`
+		}
+	}, 
+	output: {
+		publicPath: `/`
+	}, 
 	resolve: {
 		alias: {
-			components: path.resolve(__dirname, 'src/js/components'),
+			components: path.resolve(__dirname, 'src/components/'),
+			containers: path.resolve(__dirname, 'src/containers/'),
+			contexts: path.resolve(__dirname, 'src/contexts/'),
+			pages: path.resolve(__dirname, 'src/pages/'),
+			utils: path.resolve(__dirname, 'src/utils/'),
 			css: path.resolve(__dirname, 'src/css/'),
 			img: path.resolve(__dirname, 'src/img/'),
 		}
 	}
-};
+}
